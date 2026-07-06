@@ -26,6 +26,7 @@ export default function CircleTimer({
       aria-label={`Noch ${formatSeconds(remaining)}`}
     >
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+        <circle cx={size / 2} cy={size / 2} r={r - stroke} fill="var(--card)" />
         <circle
           cx={size / 2}
           cy={size / 2}

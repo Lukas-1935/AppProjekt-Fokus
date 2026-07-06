@@ -61,13 +61,19 @@
   }
 }
 
-/* Gefüllte Primär-Buttons brauchen im Dunkelmodus eine eigene Fläche */
+/* Gefüllte Buttons brauchen im Dunkelmodus eigene Flächen */
 :root {
   --btn-primary-bg: var(--blue);
+  --btn-success-bg: #5f7a4e;
+  --btn-success-ink: #ffffff;
+  --streak-grad: linear-gradient(165deg, #2a4a72, #1c3557);
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --btn-primary-bg: #2f4a6e;
+    --btn-success-bg: #8fa97a;
+    --btn-success-ink: #1f2618;
+    --streak-grad: linear-gradient(165deg, #3a577f, #263f60);
   }
 }
 
@@ -306,7 +312,7 @@ textarea {
 
 /* Streak-Karte */
 .card--streak {
-  background: var(--btn-primary-bg);
+  background: var(--streak-grad);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -330,6 +336,13 @@ textarea {
 .card--streak__label {
   font-size: 15px;
   opacity: 0.85;
+}
+
+.card--streak__meta {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: 6px;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ---------- Rangliste ---------- */
@@ -423,6 +436,18 @@ textarea {
 .btn--primary {
   background: var(--btn-primary-bg);
   color: var(--tint-contrast);
+  box-shadow: 0 4px 14px rgba(30, 58, 95, 0.22);
+}
+
+@media (prefers-color-scheme: dark) {
+  .btn--primary {
+    box-shadow: none;
+  }
+}
+
+.btn--success {
+  background: var(--btn-success-bg);
+  color: var(--btn-success-ink);
 }
 
 .btn--secondary {
@@ -783,6 +808,7 @@ textarea {
   height: 260px;
   user-select: none;
   -webkit-user-select: none;
+  filter: drop-shadow(0 8px 20px rgba(45, 45, 45, 0.08));
 }
 
 .circle-timer__center {
@@ -924,6 +950,40 @@ textarea {
 
 .mini-panel__hint {
   font-size: 12px;
+}
+
+.mini-panel__text {
+  flex: 1;
+  text-align: left;
+  color: var(--ink);
+}
+
+.volume {
+  width: 92px;
+  accent-color: var(--tint);
+}
+
+/* Wikipedia-Treffer im Such-Panel */
+.search-hit {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--fill-secondary);
+}
+
+.search-hit__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tint);
+}
+
+.search-hit__snippet {
+  font-size: 12px;
+  color: var(--muted);
 }
 
 .equalizer {
@@ -1197,7 +1257,15 @@ textarea {
 }
 
 .success-hero__emoji {
-  font-size: 52px;
+  font-size: 46px;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  display: grid;
+  place-items: center;
+  margin-bottom: 4px;
 }
 
 .success-hero__title {

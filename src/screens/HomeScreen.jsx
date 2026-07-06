@@ -47,6 +47,10 @@ export default function HomeScreen({ stats, onNewSession, onOpenSettings, highli
         <span className="card--streak__label">
           {stats.streak === 1 ? 'Tag Streak' : 'Tage Streak'}
         </span>
+        <span className="card--streak__meta">
+          {stats.totalMinutes} Fokusminuten · {stats.sessionsCompleted}{' '}
+          {stats.sessionsCompleted === 1 ? 'Session' : 'Sessions'}
+        </span>
       </section>
 
       <p className="section-header">Rangliste</p>

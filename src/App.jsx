@@ -59,11 +59,11 @@ export default function App() {
     setScreen(SCREENS.FOCUS);
   };
 
-  /** Ein Fokusblock ist durch: Minuten & Tageszähler gutschreiben. */
-  const recordBlock = () => {
+  /** Ein Fokusblock ist durch: tatsächliche Minuten & Tageszähler gutschreiben. */
+  const recordBlock = (minutes) => {
     setStats((s) => ({
       ...s,
-      totalMinutes: s.totalMinutes + session.focusMin,
+      totalMinutes: s.totalMinutes + minutes,
       blocksToday: (s.blocksTodayDate === today ? s.blocksToday : 0) + 1,
       blocksTodayDate: today,
     }));
@@ -89,8 +89,13 @@ export default function App() {
     });
   };
 
-  const handleFocusComplete = () => {
-    recordBlock();
+  /**
+   * Block beenden (regulär durch Timerende oder früher per Pause-Sheet,
+   * wenn die Aufgabe schon vorher erledigt war). Nach dem letzten Block
+   * geht es direkt in den Erfolg, sonst in die Pause.
+   */
+  const finishBlock = (minutes) => {
+    recordBlock(minutes);
     if (currentBlock < session.totalBlocks) {
       setScreen(SCREENS.BREAK);
     } else {
@@ -98,6 +103,8 @@ export default function App() {
       setScreen(SCREENS.SUCCESS);
     }
   };
+
+  const handleFocusComplete = () => finishBlock(session.focusMin);
 
   const handleBreakContinue = () => {
     setCurrentBlock((b) => b + 1);
@@ -133,6 +140,7 @@ export default function App() {
           settings={settings}
           streak={normalizedStats.streak}
           onComplete={handleFocusComplete}
+          onEarlyBreak={finishBlock}
           onQuit={abortSession}
         />
       )}

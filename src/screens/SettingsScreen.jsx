@@ -2,8 +2,8 @@ import Toggle from '../components/Toggle.jsx';
 import { CONTACTS } from '../data/mock.js';
 
 const TOGGLES = [
-  { key: 'allowMusic', label: 'Musik erlauben', hint: 'Ruhige Playlists während des Fokus' },
-  { key: 'allowLookup', label: 'Nachschlagen erlauben', hint: 'Kurze Suchen, ohne die Session zu verlassen' },
+  { key: 'allowMusic', label: 'Musik erlauben', hint: 'Ruhiger Fokus-Klang, direkt in der App' },
+  { key: 'allowLookup', label: 'Nachschlagen erlauben', hint: 'Wikipedia-Suche, ohne die Session zu verlassen' },
   { key: 'filterNotifications', label: 'Benachrichtigungen filtern', hint: 'Nur Wichtiges kommt durch' },
 ];
 

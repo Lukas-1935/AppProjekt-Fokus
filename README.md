@@ -23,7 +23,13 @@ Viewport des Browsers ansehen (oder einfach das gerahmte "iPhone" auf dem Deskto
 - **Session einrichten**: Ziel, Zeitblöcke (25/5, 50/10 oder eigene Zeiten),
   1–3 Blöcke pro Session
 - **Laufende Session**: echter Kreis-Countdown, Blockanzeige mit Punkten,
-  Musik-/Such-Buttons (nur aktiv, wenn erlaubt), Pause-Button
+  echter **Fokus-Klang** (Web Audio, offline, mit Lautstärkeregler) und
+  echte **Wikipedia-Schnellsuche** in der App (beides nur aktiv, wenn in
+  den Einstellungen erlaubt)
+- **Frühe Pause**: Der Pause-Button fragt einen Grund ab (min. 5 Zeichen) –
+  z. B. wenn die Aufgabe schon vor Ablauf des Timers erledigt war. Der
+  laufende Block wird mit den tatsächlich fokussierten Minuten gewertet;
+  danach geht es in die Pause bzw. nach dem letzten Block direkt zum Erfolg
 - **Abbruchhürde**: Stopp nur per 3-Sekunden-Halten (mit Progress-Ring),
   danach Pflicht-Begründung (min. 5 Zeichen) + 3s-Cooldown auf
   „Trotzdem beenden" – und eine kleine Belohnung fürs Weitermachen

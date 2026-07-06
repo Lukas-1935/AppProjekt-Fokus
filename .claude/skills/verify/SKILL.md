@@ -29,6 +29,17 @@ Flows, die den Kern abdecken:
    halten (kürzeres Halten darf KEINEN Dialog öffnen); im Dialog:
    `.link--danger` erst nach Cooldown UND ≥5 Zeichen in `.dialog__textarea`
    aktiv; Timer muss währenddessen pausieren
+4b. **Pause-Sheet**: „Pause" öffnet `#pause-reason`-Sheet („Pause starten"
+   erst ab 5 Zeichen; „Weiter fokussieren" schließt + Timer läuft weiter).
+   Bestätigen wertet den Block mit den echten Minuten
+   (`Math.round(elapsed/60)` – bei sofortiger Pause 0!) und führt in die
+   Pause; auf dem LETZTEN Block direkt zum Erfolg (Button heißt dann
+   „Session abschließen"). Exakte Minuten-Assertions daher mit Toleranz.
+4c. **Musik/Suche**: Musik-Klick zeigt Panel „Fokus-Klang läuft" + `.volume`-
+   Slider (Web Audio, kein Netz nötig). Suche fragt die Wikipedia-API ab —
+   in der Sandbox blockt der Proxy `de.wikipedia.org` (403), es MUSS die
+   Meldung „Keine Verbindung …" erscheinen; `.search-hit`-Treffer sind nur
+   mit echtem Netz testbar.
 5. **Pause**: Shell-Hintergrund wird grünlich (`rgb(230,236,218)`),
    Checkliste abhakbar (Achtung: 0,15 s Farbtransition vor Screenshot abwarten)
 6. **Erfolg**: Stats `[Minuten, Streak, Blöcke heute]` prüfen; vor Screenshot
