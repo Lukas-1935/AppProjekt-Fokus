@@ -43,6 +43,14 @@ Streak, Statistiken und Einstellungen liegen im `localStorage`
 neuen Tag das Tagesziel (eine komplette Session) abgeschlossen wird; ein
 ausgelassener Tag setzt sie zurück.
 
+## Design
+
+Gestaltet nach den [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines):
+System-Schrift (SF Pro auf Apple-Geräten, Inter als Fallback), iOS-Typo-Skala,
+gruppierte Inset-Listen mit Hairline-Trennern, Segmented Control, Sheet mit
+Grabber für die Abbruchhürde, 44pt-Touch-Ziele, heller **und** dunkler Modus
+(folgt der Systemeinstellung) sowie respektierte Reduzierte-Bewegung-Einstellung.
+
 ## Stack
 
 React 18 + Vite, reines CSS (keine UI-Bibliothek), keine weiteren Laufzeit-Dependencies.

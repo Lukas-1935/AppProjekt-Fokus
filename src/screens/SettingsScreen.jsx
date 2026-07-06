@@ -18,16 +18,16 @@ export default function SettingsScreen({ settings, onChange, onBack }) {
 
   return (
     <div className="screen">
-      <header className="screen__header">
-        <button type="button" className="icon-btn" aria-label="Zurück" onClick={onBack}>
-          ←
+      <header className="nav-bar">
+        <span className="nav-bar__side" />
+        <h1 className="nav-bar__title">Einstellungen</h1>
+        <button type="button" className="nav-bar__action" onClick={onBack}>
+          Fertig
         </button>
-        <h1 className="screen__title screen__title--center">Einstellungen</h1>
-        <span className="icon-btn icon-btn--ghost" aria-hidden="true" />
       </header>
 
-      <section className="card">
-        <h2 className="card__title">Während der Session</h2>
+      <p className="section-header">Während der Session</p>
+      <section className="card card--list">
         {TOGGLES.map((t) => (
           <div key={t.key} className="setting-row">
             <div>
@@ -43,11 +43,8 @@ export default function SettingsScreen({ settings, onChange, onBack }) {
         ))}
       </section>
 
-      <section className="card">
-        <h2 className="card__title">Wichtige Anrufe zulassen</h2>
-        <p className="card__subtitle">
-          Diese Kontakte dürfen dich auch im Fokus erreichen.
-        </p>
+      <p className="section-header">Wichtige Anrufe zulassen</p>
+      <section className="card card--list">
         <ul className="contact-list">
           {CONTACTS.map((c) => (
             <li key={c.id}>
@@ -57,17 +54,16 @@ export default function SettingsScreen({ settings, onChange, onBack }) {
                   checked={Boolean(settings.whitelist[c.id])}
                   onChange={() => toggleContact(c.id)}
                 />
-                <span className="check-row__box" aria-hidden="true" />
                 <span className="check-row__label">{c.name}</span>
+                <span className="check-row__box" aria-hidden="true" />
               </label>
             </li>
           ))}
         </ul>
       </section>
-
-      <button type="button" className="btn btn--primary btn--big" onClick={onBack}>
-        Fertig
-      </button>
+      <p className="section-footer">
+        Diese Kontakte dürfen dich auch im Fokus erreichen.
+      </p>
     </div>
   );
 }

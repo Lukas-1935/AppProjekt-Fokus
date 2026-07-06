@@ -45,6 +45,11 @@ localStorage.setItem('fokusapp.stats', JSON.stringify({
 }));
 ```
 
+## Dark Mode
+
+Die App folgt `prefers-color-scheme`. Beide Modi prüfen:
+`browser.newPage({ colorScheme: 'dark' })` bzw. `'light'`.
+
 ## Gotchas
 
 - Screenshots direkt nach Screen-Wechsel wirken blass/halbtransparent —

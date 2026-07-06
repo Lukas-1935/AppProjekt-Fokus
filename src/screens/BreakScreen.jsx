@@ -20,8 +20,10 @@ export default function BreakScreen({ session, nextBlock, onContinue }) {
 
   return (
     <div className="screen screen--break">
-      <header className="screen__header screen__header--center">
-        <h1 className="screen__title">Pause 🌿</h1>
+      <header className="nav-bar">
+        <span className="nav-bar__side" />
+        <h1 className="nav-bar__title">Pause</h1>
+        <span className="nav-bar__side" />
       </header>
 
       <CircleTimer
@@ -32,8 +34,10 @@ export default function BreakScreen({ session, nextBlock, onContinue }) {
         onSecretSkip={skip}
       />
 
-      <section className="card card--transparent">
-        <h2 className="card__title">Gönn dir kurz was:</h2>
+      <section className="card card--list" style={{ textAlign: 'left' }}>
+        <h2 className="card__title" style={{ marginTop: 10 }}>
+          Gönn dir kurz was:
+        </h2>
         <ul className="break-list">
           {BREAK_SUGGESTIONS.map((item) => (
             <li key={item.id} className="break-list__item">
@@ -54,7 +58,7 @@ export default function BreakScreen({ session, nextBlock, onContinue }) {
             </li>
           ))}
         </ul>
-        <p className="break-note">📵 Lass dein Handy liegen.</p>
+        <p className="break-note">Lass dein Handy liegen – die Pause gehört dir.</p>
       </section>
 
       <button

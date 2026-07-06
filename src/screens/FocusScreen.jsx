@@ -4,6 +4,7 @@ import HoldToStopButton from '../components/HoldToStopButton.jsx';
 import AbortDialog from '../components/AbortDialog.jsx';
 import RewardBurst from '../components/RewardBurst.jsx';
 import { useCountdown } from '../hooks/useCountdown.js';
+import { MusicIcon, SearchIcon } from '../components/Icons.jsx';
 
 /** Punktreihe "Block X von Y": abgeschlossene + aktueller Block gefüllt. */
 function BlockDots({ current, total }) {
@@ -75,7 +76,10 @@ export default function FocusScreen({ session, currentBlock, settings, streak, o
           title={settings.allowMusic ? 'Musik' : 'In den Einstellungen deaktiviert'}
           onClick={() => setMusicOn(!musicOn)}
         >
-          ♪ Musik{!settings.allowMusic && ' 🔒'}
+          <span className="tool-btn__icon">
+            <MusicIcon />
+          </span>
+          Musik
         </button>
         <button
           type="button"
@@ -84,7 +88,10 @@ export default function FocusScreen({ session, currentBlock, settings, streak, o
           title={settings.allowLookup ? 'Nachschlagen' : 'In den Einstellungen deaktiviert'}
           onClick={() => setSearchOpen(!searchOpen)}
         >
-          🔍 Suche{!settings.allowLookup && ' 🔒'}
+          <span className="tool-btn__icon">
+            <SearchIcon />
+          </span>
+          Suche
         </button>
       </div>
 

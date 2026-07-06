@@ -24,6 +24,7 @@ export default function AbortDialog({ streak, onContinue, onQuit }) {
   return (
     <div className="overlay" role="dialog" aria-modal="true" aria-label="Session wirklich beenden?">
       <div className="dialog">
+        <div className="dialog__grabber" aria-hidden="true" />
         <div className="dialog__emoji">🔥</div>
         <h2 className="dialog__title">Bleib dran!</h2>
         <p className="dialog__streak">

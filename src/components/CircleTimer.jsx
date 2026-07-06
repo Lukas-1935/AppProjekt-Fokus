@@ -8,11 +8,11 @@ export default function CircleTimer({
   totalSeconds,
   remaining,
   sublabel,
-  color = 'var(--blue)',
+  color = 'var(--tint)',
   onSecretSkip,
 }) {
   const size = 260;
-  const stroke = 10;
+  const stroke = 8;
   const r = (size - stroke) / 2;
   const circumference = 2 * Math.PI * r;
   const fraction = totalSeconds > 0 ? remaining / totalSeconds : 0;

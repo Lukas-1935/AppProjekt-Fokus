@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { buildLeaderboard, leaderboardHint } from '../utils/streak.js';
+import { GearIcon } from '../components/Icons.jsx';
 
 function greeting() {
   const h = new Date().getHours();
@@ -20,20 +21,23 @@ export default function HomeScreen({ stats, onNewSession, onOpenSettings, highli
 
   return (
     <div className="screen">
-      <header className="screen__header">
-        <div>
-          <p className="eyebrow">{greeting()} 👋</p>
-          <h1 className="screen__title">FokusApp</h1>
-        </div>
+      <header className="nav-bar">
+        <span className="nav-bar__side" />
+        <span style={{ flex: 1 }} />
         <button
           type="button"
           className="icon-btn"
           aria-label="Einstellungen"
           onClick={onOpenSettings}
         >
-          ⚙️
+          <GearIcon />
         </button>
       </header>
+
+      <div className="large-title-block">
+        <h1 className="large-title">FokusApp</h1>
+        <p className="eyebrow">{greeting()}, bleib dran.</p>
+      </div>
 
       <section className="card card--streak">
         <span className="card--streak__flame" aria-hidden="true">
@@ -45,11 +49,11 @@ export default function HomeScreen({ stats, onNewSession, onOpenSettings, highli
         </span>
       </section>
 
+      <p className="section-header">Rangliste</p>
       <section
         ref={boardRef}
-        className={`card${highlightLeaderboard ? ' card--flash' : ''}`}
+        className={`card card--list${highlightLeaderboard ? ' card--flash' : ''}`}
       >
-        <h2 className="card__title">Rangliste</h2>
         <ol className="board">
           {board.map((entry, i) => (
             <li key={entry.id} className={`board__row${entry.me ? ' is-me' : ''}`}>
@@ -62,8 +66,8 @@ export default function HomeScreen({ stats, onNewSession, onOpenSettings, highli
             </li>
           ))}
         </ol>
-        <p className="board__hint">{leaderboardHint(stats.streak)}</p>
       </section>
+      <p className="section-footer board__hint">{leaderboardHint(stats.streak)}</p>
 
       <button type="button" className="btn btn--primary btn--big" onClick={onNewSession}>
         Neue Session einrichten

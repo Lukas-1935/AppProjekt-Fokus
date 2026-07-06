@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { TIME_PRESETS } from '../data/mock.js';
+import { ChevronLeftIcon } from '../components/Icons.jsx';
 
 const FREQUENCIES = [1, 2, 3];
 
@@ -29,12 +30,13 @@ export default function SetupScreen({ onStart, onBack }) {
 
   return (
     <div className="screen">
-      <header className="screen__header">
-        <button type="button" className="icon-btn" aria-label="Zurück" onClick={onBack}>
-          ←
+      <header className="nav-bar">
+        <button type="button" className="nav-bar__back" aria-label="Zurück" onClick={onBack}>
+          <ChevronLeftIcon />
+          Zurück
         </button>
-        <h1 className="screen__title screen__title--center">Neue Session</h1>
-        <span className="icon-btn icon-btn--ghost" aria-hidden="true" />
+        <h1 className="nav-bar__title">Neue Session</h1>
+        <span className="nav-bar__side" />
       </header>
 
       <section className="card">
@@ -52,8 +54,8 @@ export default function SetupScreen({ onStart, onBack }) {
         />
       </section>
 
+      <p className="section-header">Zeitblock (Fokus / Pause)</p>
       <section className="card">
-        <h2 className="card__title">Zeitblock (Fokus / Pause)</h2>
         <div className="choice-row">
           {TIME_PRESETS.map((p) => (
             <button
@@ -102,22 +104,21 @@ export default function SetupScreen({ onStart, onBack }) {
         )}
       </section>
 
-      <section className="card">
-        <h2 className="card__title">Wie viele Blöcke?</h2>
-        <div className="choice-row">
-          {FREQUENCIES.map((n) => (
-            <button
-              key={n}
-              type="button"
-              className={`choice${blocks === n ? ' is-active' : ''}`}
-              onClick={() => setBlocks(n)}
-            >
-              <span className="choice__big">{n}×</span>
-              <span className="choice__small">{n === 1 ? 'Block' : 'Blöcke'}</span>
-            </button>
-          ))}
-        </div>
-      </section>
+      <p className="section-header">Wie viele Blöcke?</p>
+      <div className="segmented" role="radiogroup" aria-label="Anzahl der Blöcke">
+        {FREQUENCIES.map((n) => (
+          <button
+            key={n}
+            type="button"
+            role="radio"
+            aria-checked={blocks === n}
+            className={`choice${blocks === n ? ' is-active' : ''}`}
+            onClick={() => setBlocks(n)}
+          >
+            {n}×
+          </button>
+        ))}
+      </div>
 
       <button
         type="button"
